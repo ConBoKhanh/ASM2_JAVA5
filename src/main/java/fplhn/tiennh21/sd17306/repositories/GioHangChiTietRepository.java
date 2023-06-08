@@ -18,4 +18,10 @@ public interface GioHangChiTietRepository extends JpaRepository<GioHangChiTiet, 
 
     @Query(value = "select gh from GioHangChiTiet gh where gh.gioHang.id = ?1 and gh.chiTietSp.id = ?2")
     GioHangChiTiet findGioHangChiTietByGioHangAndCAndChiTietSp(UUID idgh,UUID idct);
+
+    @Query(value = "select SUM(ghct.donGia) from GioHangChiTiet ghct where ghct.gioHang.id = ?1")
+    Object tinhTongTien(UUID idgh);
+
+
+
 }

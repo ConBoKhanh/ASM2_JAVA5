@@ -226,7 +226,7 @@
                     </i> <span class="nav_name">Giỏ Hàng</span>
                 </a>
                 <!--  -->
-                <a href="#" class="nav_link" style="text-decoration: none;">
+                <a href="/hoa-don/user" class="nav_link" style="text-decoration: none;">
                     <!-- <i class='bx bx-message-square-detail nav_icon'></i> -->
                     <i class='bx bx-history nav_icon'></i>
                     <span class="nav_name">Hóa Đơn</span>

@@ -1,6 +1,8 @@
 package fplhn.tiennh21.sd17306.controllers;
 
+import fplhn.tiennh21.sd17306.entities.NhanVien;
 import fplhn.tiennh21.sd17306.repositories.KhachHangRepository;
+import fplhn.tiennh21.sd17306.repositories.NhanVienRepository;
 import fplhn.tiennh21.sd17306.request.Account;
 import jakarta.servlet.http.HttpSession;
 import org.hibernate.Session;
@@ -23,13 +25,15 @@ public class LoginController {
     @Autowired
     private KhachHangRepository khRepo;
 
+    @Autowired
+    private NhanVienRepository nvRepo;
+
 
     @GetMapping("login")
     public String getLoginForm(Model model)
     {
-        model.addAttribute("view","/views/login.jsp");
 
-        return "layoutPro";
+        return "login";
     }
 
     @PostMapping("login")
@@ -44,6 +48,12 @@ public class LoginController {
 
         String sdt =  account.getEmail();
         String pass = account.getPassword();
+        NhanVien nv = this.nvRepo.getNhanVienBy(sdt,pass);
+        if(nv != null){
+            session.setAttribute("nv",nv);
+            return "redirect:/home";
+        }
+
 
         if(this.khRepo.getKhachHangBySdtEqualsAndMatKhauEquals(sdt,pass)==null){
             return "redirect:/login";

@@ -1,5 +1,6 @@
 package fplhn.tiennh21.sd17306.filters;
 
+import fplhn.tiennh21.sd17306.entities.NhanVien;
 import fplhn.tiennh21.sd17306.request.Account;
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
@@ -17,7 +18,7 @@ public class AdminFilter implements Filter {
             HttpServletResponse httpResponse = (HttpServletResponse) response;
 
             HttpSession session = httpRequest.getSession();
-            Account nhanVien = (Account) session.getAttribute("nv");
+            NhanVien nhanVien = (NhanVien) session.getAttribute("nv");
 
             if (httpRequest.getRequestURI().equals(httpRequest.getContextPath() + "/login")) {
                 chain.doFilter(request, response);

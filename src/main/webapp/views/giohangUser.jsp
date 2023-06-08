@@ -34,6 +34,14 @@
     </style>
 </head>
 <body>
+<script >
+    function check(){
+        var ch = confirm('ban co muon xoa khong')
+        if(ch == false){
+            event.preventDefault()
+        }
+    }
+</script>
 <section class="h-100 h-custom" style="background-color: #eee;">
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
@@ -76,14 +84,28 @@
                                                     </div>
                                                 </div>
                                                 <div class="d-flex flex-row align-items-center">
+
+                                                    <sf:form action="/gio-hang/AddOne/${gh.chiTietSp.id}" method="post">
+                                                    <div>
+                                                        <button type="submit" style="width: 30px;border: none" > + </button>
+                                                    </div>
+                                                    </sf:form>
+
+                                                    <sf:form action="/gio-hang/TruOne/${gh.chiTietSp.id}" method="post">
+                                                    <div style="margin-left: 30px ; margin-right: 30px">
+                                                        <button type="submit"  style="width: 30px; border: none"> - </button>
+                                                    </div>
+                                                    </sf:form>
+
                                                     <div style="width: 50px;">
                                                         <h5 class="fw-normal mb-0">${gh.soLuongTon}</h5>
                                                     </div>
+
                                                     <div style="width: 80px;">
                                                         <h5 class="mb-0">${gh.donGia}</h5>
                                                     </div>
                                                     <sf:form action="/delete-product/${gh.chiTietSp.id}" method="post">
-                                                        <button type="submit" style="border: none" class="fas fa-trash-alt" ></button>
+                                                        <button type="submit" style="border: none" class="fas fa-trash-alt"  onclick="check()"></button>
 
                                                     </sf:form>
                                                 </div>
@@ -96,6 +118,8 @@
 
 
                             </div>
+
+
                             <div class="col-lg-5">
 
                                 <div class="card bg-primary text-white rounded-3">
@@ -115,62 +139,66 @@
                                                 class="fab fa-cc-amex fa-2x me-2"></i></a>
                                         <a href="#!" type="submit" class="text-white"><i class="fab fa-cc-paypal fa-2x"></i></a>
 
-                                        <form class="mt-4">
-                                            <div class="form-outline form-white mb-4">
-                                                <input type="text" id="typeName" class="form-control form-control-lg" siez="17"
-                                                       placeholder="Cardholder's Name" />
-                                                <label class="form-label" for="typeName">Ten Nguoi Nhan</label>
-                                            </div>
 
-                                            <div class="form-outline form-white mb-4">
-                                                <input type="text" id="" class="form-control form-control-lg" siez="17"
-                                                       placeholder="1234 5678 9012 3457" minlength="19" maxlength="19" />
-                                                <label class="form-label" for="">Phone Number</label>
-                                            </div>
+                                        <sf:form action="/gio-hang/thanh-toan" method="post">
+                                        <div>
+                                            <form class="mt-4">
+                                                <div class="form-outline form-white mb-4">
+                                                    <input type="text" id="typeName" class="form-control form-control-lg" siez="17"
+                                                           placeholder="Ten Nguoi Nhan's Name" name="ten"/>
 
-                                            <div class="row mb-4">
-                                                <div class="col-md-6">
-                                                    <div class="form-outline form-white">
-                                                        <input type="text" id="typeExp" class="form-control form-control-lg"
-                                                               placeholder="MM/YYYY" size="7" id="exp" minlength="7" maxlength="7" />
-                                                        <label class="form-label" for="typeExp">Location</label>
+                                                </div>
+
+                                                <div class="form-outline form-white mb-4">
+                                                    <input type="text" id="" class="form-control form-control-lg" siez="17"
+                                                           placeholder="1234 5678 9012 3457"  name="sdt" />
+
+                                                </div>
+
+                                                <div class="row mb-4">
+                                                    <div class="col-md-6">
+                                                        <div class="form-outline form-white">
+                                                            <input type="text" id="typeExp" class="form-control form-control-lg"
+                                                                   placeholder="Dia Chi Nguoi Nhan" size="7" id="exp" name="diaChi"/>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                            <%--                                                    <div class="form-outline form-white">--%>
+                                                            <%--                                                        <input type="password" id="typeText" class="form-control form-control-lg"--%>
+                                                            <%--                                                               placeholder="&#9679;&#9679;&#9679;" size="1" minlength="3" maxlength="3" />--%>
+                                                            <%--                                                        <label class="form-label" for="typeText">Cvv</label>--%>
+                                                            <%--                                                    </div>--%>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <%--                                                    <div class="form-outline form-white">--%>
-                                                    <%--                                                        <input type="password" id="typeText" class="form-control form-control-lg"--%>
-                                                    <%--                                                               placeholder="&#9679;&#9679;&#9679;" size="1" minlength="3" maxlength="3" />--%>
-                                                    <%--                                                        <label class="form-label" for="typeText">Cvv</label>--%>
-                                                    <%--                                                    </div>--%>
-                                                </div>
-                                            </div>
 
-                                        </form>
+                                            </form>
 
-                                        <hr class="my-4">
+                                            <hr class="my-4">
 
-                                        <div class="d-flex justify-content-between">
-                                            <p class="mb-2">Subtotal</p>
-                                            <p class="mb-2">$ ${dongia}</p>
-                                        </div>
-
-                                        <div class="d-flex justify-content-between">
-                                            <p class="mb-2">Shipping</p>
-                                            <p class="mb-2">$20.00</p>
-                                        </div>
-
-                                        <div class="d-flex justify-content-between mb-4">
-                                            <p class="mb-2">Total(Incl. taxes)</p>
-                                            <p class="mb-2">$ ${dongia + 20}</p>
-                                        </div>
-
-                                        <button type="button" class="btn btn-info btn-block btn-lg">
                                             <div class="d-flex justify-content-between">
-                                                <span>$ ${dongia + 20}</span>
-                                                <span>Checkout <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
+                                                <p class="mb-2">Subtotal</p>
+                                                <p class="mb-2">$ ${dongia == null?"0":dongia}</p>
                                             </div>
-                                        </button>
 
+                                            <div class="d-flex justify-content-between">
+                                                <p class="mb-2">Shipping</p>
+                                                <p class="mb-2">$20.00</p>
+                                            </div>
+
+                                            <div class="d-flex justify-content-between mb-4">
+                                                <p class="mb-2">Total(Incl. taxes)</p>
+                                                <p class="mb-2">$ ${dongia + 20}</p>
+                                            </div>
+
+                                            <button type="submit" class="btn btn-info btn-block btn-lg">
+                                                <div class="d-flex justify-content-between">
+                                                    <span>$ ${dongia + 20}</span>
+                                                    <span>Checkout <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
+                                                </div>
+                                            </button>
+                                        </div>
+                                        </sf:form>
                                     </div>
                                 </div>
 
